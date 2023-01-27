@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { getTodos, createTodo, removeTodo} from './util';
+import { getTodos, createTodo, removeTodo, getMessage} from './util';
 
 const App = () => {
   const [todo, setTodo] = useState({
     description: '',
   });
+  const [welcome, setWelcome] = useState('');
   const [todoList, setTodoList] = useState();
   const [error, setError] = useState();
 
@@ -18,6 +19,15 @@ const App = () => {
       setTodoList(res.data);
     }
   };
+
+  const fetchMessage = async () => {
+    const res = await getMessage();
+    if (res.error) {
+      setError(res.error.name);
+    } else {
+      setWelcome(res.data)
+    }
+  }
 
 
   // Create a handleDelete() function to remove to-do list with matching id
@@ -51,12 +61,14 @@ const App = () => {
   // Gets my string from /api endpoint
 
   useEffect(() => {
+    fetchMessage();
     fetchTodos();
 
   }, []);
 
   return (
     <div className="App">
+      <h1>{welcome}</h1>
       <h1>To-Do List</h1>
       <form onSubmit={(e) => handleSubmit(e)}>
         <input

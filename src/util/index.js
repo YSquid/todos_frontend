@@ -34,6 +34,16 @@ export const getTodos = async () => {
   }
 };
 
+export const getMessage = async () =>{
+  try {
+    const res = await fetch('/api')
+    const data = await res.json();
+    return data
+  } catch (error) {
+    return error;
+  }
+}
+
 export const removeTodo = async (id) => {
   try {
     await fetch(`/api/todo/${id}`, {
