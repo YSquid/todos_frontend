@@ -36,7 +36,7 @@ export const getTodos = async () => {
 
 export const getMessage = async () =>{
   try {
-    const res = await fetch('/api')
+    const res = await fetch('https://todos-back.netlify.app/api')
     const data = await res.json();
     return data
   } catch (error) {
