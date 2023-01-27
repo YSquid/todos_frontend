@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { getTodos, createTodo, removeTodo } from './util';
+import { getTodos, createTodo, removeTodo} from './util';
 
 const App = () => {
   const [todo, setTodo] = useState({
@@ -18,6 +18,8 @@ const App = () => {
       setTodoList(res.data);
     }
   };
+
+
   // Create a handleDelete() function to remove to-do list with matching id
   const handleDelete = async (id) => {
     try {
@@ -46,8 +48,11 @@ const App = () => {
     }
   };
 
+  // Gets my string from /api endpoint
+
   useEffect(() => {
     fetchTodos();
+
   }, []);
 
   return (
