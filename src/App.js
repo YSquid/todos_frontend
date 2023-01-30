@@ -16,7 +16,7 @@ const App = () => {
     if (res.error) {
       setError(res.error.name);
     } else {
-      setTodoList(res.data);
+      setTodoList(res);
     }
   };
 
