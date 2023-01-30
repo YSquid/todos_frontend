@@ -1,6 +1,6 @@
 export const createTodo = async (todo) => {
   try {
-        const res = await fetch('/api/todo/create', {
+        const res = await fetch('https://todos-back.netlify.app/api/todo/create', {
       method: 'POST',
       body: todo,
     });
@@ -13,7 +13,7 @@ export const createTodo = async (todo) => {
 
 export const updateTodo = async (id, form) => {
   try {
-    const res = await fetch(`/api/todo/${id}`, {
+    const res = await fetch(`https://todos-back.netlify.app/api/todos/${id}`, {
       method: 'PUT',
       body: form,
     });
@@ -48,7 +48,7 @@ export const getMessage = async () =>{
 
 export const removeTodo = async (id) => {
   try {
-    await fetch(`/api/todo/${id}`, {
+    await fetch(`https://todos-back.netlify.app/api/todo/${id}`, {
       method: 'DELETE',
     });
     return 'deleted';
