@@ -26,7 +26,7 @@ export const updateTodo = async (id, form) => {
 
 export const getTodos = async () => {
   try {
-    const res = await fetch('/api/todos');
+    const res = await fetch('https://todos-back.netlify.app/api/todos');
     const data = await res.json();
     return data;
   } catch (error) {
